@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(go2_navigation)
+project(go2_warehouse_transport)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)

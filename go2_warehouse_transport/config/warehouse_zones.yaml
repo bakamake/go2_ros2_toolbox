@@ -1,0 +1,72 @@
+# Predefined warehouse zones for the simulated transport demo.
+# Each zone is a (position, orientation) target that the robot navigates to.
+#
+# The layout is a small warehouse with two parallel aisles:
+#
+#      +Y
+#      ^
+#      |    SHELF-B1   SHELF-B2   SHELF-B3
+#      |
+#      |   -----------------------------------  aisle 2
+#      |
+#      |        STAGE-1      STAGE-2      STAGE-3
+#      |   -----------------------------------  aisle 1
+#      |
+#      |    SHELF-A1   SHELF-A2   SHELF-A3
+#      +---------------------> +X
+#
+# HOME is the charging dock / staging point outside the aisles.
+
+zones:
+  HOME:
+    zone_id: HOME
+    position:    {x: 0.0,  y: 0.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.0, w: 1.0}
+
+  # Pickup shelf line — south side of the warehouse
+  SHELF-A1:
+    zone_id: SHELF-A1
+    position:    {x: 2.0,  y: -4.0, z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.7071, w: 0.7071}
+  SHELF-A2:
+    zone_id: SHELF-A2
+    position:    {x: 4.0,  y: -4.0, z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.7071, w: 0.7071}
+  SHELF-A3:
+    zone_id: SHELF-A3
+    position:    {x: 6.0,  y: -4.0, z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.7071, w: 0.7071}
+
+  # Pickup shelf line — north side of the warehouse
+  SHELF-B1:
+    zone_id: SHELF-B1
+    position:    {x: 2.0,  y: 4.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: -0.7071, w: 0.7071}
+  SHELF-B2:
+    zone_id: SHELF-B2
+    position:    {x: 4.0,  y: 4.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: -0.7071, w: 0.7071}
+  SHELF-B3:
+    zone_id: SHELF-B3
+    position:    {x: 6.0,  y: 4.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: -0.7071, w: 0.7071}
+
+  # Drop-off / staging locations — central aisle
+  STAGE-1:
+    zone_id: STAGE-1
+    position:    {x: 2.0,  y: 0.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.0, w: 1.0}
+  STAGE-2:
+    zone_id: STAGE-2
+    position:    {x: 4.0,  y: 0.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.0, w: 1.0}
+  STAGE-3:
+    zone_id: STAGE-3
+    position:    {x: 6.0,  y: 0.0,  z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.0, w: 1.0}
+
+  # Loading bay doors (used as drop-off in demo loop)
+  BAY-OUT:
+    zone_id: BAY-OUT
+    position:    {x: -2.0, y: -2.0, z: 0.0}
+    orientation: {x: 0.0,  y: 0.0,  z: 0.0, w: 1.0}

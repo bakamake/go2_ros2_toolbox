@@ -1,10 +1,17 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>go2_navigation</name>
-  <version>0.0.0</version>
-  <description>Go2 navigation glue: Nav2 TCP bridge and standalone TCP client.</description>
-  <maintainer email="zhuoan@stu.pku.edu.cn">andy-desktop-ubuntu</maintainer>
+  <name>go2_warehouse_transport</name>
+  <version>0.1.0</version>
+  <description>
+    Go2 warehouse autonomous transport and fixed-point placement.
+    Simulation of a warehouse scenario: a Go2 dog-style mobile base navigates
+    to pickup shelves, picks a payload, transports it across the floor, and
+    drops it at a target staging area. Built on the same TCP/Nav2 bridge
+    pattern as go2_navigation, extended with a three-phase state machine
+    (PICKUP -> TRANSPORT -> PLACE).
+  </description>
+  <maintainer email="zhuoan@stu.edu.cn">andy-desktop-ubuntu</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
@@ -13,6 +20,7 @@
   <depend>rclpy</depend>
   <depend>nav2_msgs</depend>
   <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
 
   <exec_depend>ament_index_python</exec_depend>
   <exec_depend>python3-yaml</exec_depend>

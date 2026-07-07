@@ -1,0 +1,5 @@
+# TCP server settings for nav2_tcp_bridge (the bridge listens on this address)
+# and tcp_client_standalone (which connects to host:port).
+nav_server:
+  host: "0.0.0.0"
+  port: 5432

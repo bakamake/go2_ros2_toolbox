@@ -1,0 +1,9 @@
+# TCP server settings for the warehouse transport bridge.
+# Same shape as go2_navigation's config so existing client tools can point at
+# the new bridge with minimal changes.
+nav_server:
+  host: "0.0.0.0"
+  port: 5432
+  # Maximum number of times a Nav2 goal (per leg) is retried before the
+  # whole transport task is marked as failed.
+  max_retries: 3

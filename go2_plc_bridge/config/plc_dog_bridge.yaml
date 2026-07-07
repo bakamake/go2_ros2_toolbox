@@ -1,0 +1,24 @@
+# Parameters for plc_dog_bridge node.
+# Mirrors the constants at the top of /home/bakamake/Downloads/1.py.
+plc:
+  ip: "192.168.101.15"
+  rack: 0
+  slot: 1
+  trig_i_byte: 128
+  trig_i_bit: 0
+  poll_period: 0.2
+
+dog:
+  ip: "192.168.101.4"
+  user: "unitree"
+  password: "123"
+  ssh_port: 22
+  stand_cmd: "cd ~/unitree_sdk2_python/unitree_sdk2py && PYTHONPATH=../ python3 standup.py"
+  sit_cmd: "cd ~/unitree_sdk2_python/unitree_sdk2py && PYTHONPATH=../ python3 standown.py"
+  stand_duration: 10
+
+bridge:
+  # Seconds between reconnect attempts when PLC or SSH drop.
+  reconnect_period: 5.0
+  # paramiko transport keepalive seconds.
+  ssh_keepalive_interval: 10

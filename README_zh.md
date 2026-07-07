@@ -153,3 +153,39 @@ ros2 launch go2_core go2_startup.launch.py
 ---
 
 **注意**：本工具箱为非官方项目，与 Unitree Robotics 无直接关联。
+
+## 🆕 PLC / Go2 SSH 桥接 (`go2_plc_bridge`)
+
+将原 `1.py` 中「PLC `I128.0` 上升沿 → SSH 到 Go2 主机执行 `standup.py` → 10s 后执行 `standown.py`」的流程封装为 ROS2 节点。
+
+```bash
+# 先装 Python 依赖
+pip3 install paramiko python-snap7
+
+# 启动（真实硬件）
+ros2 launch go2_plc_bridge plc_dog_bridge.launch.py
+
+# 调试用 dry-run：不读 PLC、不发 SSH
+ros2 launch go2_plc_bridge plc_dog_bridge.launch.py use_plc:=false use_ssh:=false
+
+# 无 PLC 也能复现一次完整 cycle
+ros2 launch go2_plc_bridge plc_dog_bridge.launch.py use_plc:=false trigger_once:=true
+```
+
+观察话题：
+
+- `/plc/i128_state` (`std_msgs/Bool`) — 每个 poll 周期发布当前 I128.0 状态
+- `/dog/action_status` (`std_msgs/String`) — `stand_started` / `stand_hold_done` / `sit_done`
+- `/plc/bridge_heartbeat` (`std_msgs/Int32`) — 1Hz 心跳计数
+
+参数在 `go2_plc_bridge/config/plc_dog_bridge.yaml`；生产环境请改用 SSH key，避免在 YAML 中放明文密码。
+
+## 🆕 Navigation TCP 桥 (`go2_navigation` 修复)
+
+- `nav2_tcp_bridge` 与 `tcp_client_standalone` 现在是 `ros2 run` 可发现的 console script
+- `config/tcp_config.yaml` 默认监听 `0.0.0.0:5432`（与 `go2_startup.launch.py` 中 `tcp_port=5432` 一致）
+
+```bash
+ros2 run go2_navigation nav2_tcp_bridge
+ros2 run go2_navigation tcp_client_standalone
+```

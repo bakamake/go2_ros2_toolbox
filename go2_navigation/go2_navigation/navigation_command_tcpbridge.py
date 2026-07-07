@@ -17,7 +17,7 @@ class Nav2TcpBridge(Node):
 
         # 读取配置文件
         config_path = os.path.join(
-            get_package_share_directory('go2_tcp_toolbox'),
+            get_package_share_directory('go2_navigation'),
             'config',
             'tcp_config.yaml'
         )

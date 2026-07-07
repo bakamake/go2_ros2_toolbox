@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>go2_navigation</name>
-  <version>0.0.0</version>
-  <description>Go2 navigation glue: Nav2 TCP bridge and standalone TCP client.</description>
+  <name>go2_plc_bridge</name>
+  <version>0.1.0</version>
+  <description>Glue nodes that mirror /home/bakamake/Downloads/1.py inside ROS2:
+PLC I128.0 rising edge -> SSH standup/standown on the Go2 host, plus optional
+UDP trigger and joint-feedback forwarding.</description>
   <maintainer email="zhuoan@stu.pku.edu.cn">andy-desktop-ubuntu</maintainer>
   <license>MIT</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>ament_python</buildtool_depend>
 
   <depend>rclpy</depend>
-  <depend>nav2_msgs</depend>
   <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
 
-  <exec_depend>ament_index_python</exec_depend>
+  <!-- Third-party Python deps; installed with pip3 in the target env. -->
   <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-snap7</exec_depend>
+  <exec_depend>python3-paramiko</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
